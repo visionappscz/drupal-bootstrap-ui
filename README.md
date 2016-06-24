@@ -12,7 +12,7 @@ recommended way of installation.
 ## Install
 
 ```
-$ composer require visionappscz/drupal-bootstrap-ui
+$ composer require visionappscz/bootstrap-ui
 ```
 
 ## Docs
