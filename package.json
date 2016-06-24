@@ -1,6 +1,5 @@
 {
   "name": "drupal-bootstrap-ui",
-  "version": "0.1.0",
   "description": "Bootstrap UI for Drupal 8",
   "repository": {
     "type": "git",
