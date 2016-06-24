@@ -1,0 +1,27 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'Bootstrap UI'
+description: 'Uses Bootstrap UI, a Bootstrap extension for building beautiful web apps.'
+package: 'Bootstrap'
+
+regions:
+  admin_navigation: 'Admin Navigation'
+  admin_navigation_collapsible: 'Admin Navigation (Collapsible)'
+  navigation: 'Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Header'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+
+libraries:
+  - 'bootstrap_ui/global-styling'
+  - 'bootstrap_ui/bootstrap-scripts'
+  - 'bootstrap_ui/bootstrap-ui-scripts'

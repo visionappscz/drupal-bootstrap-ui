@@ -1,0 +1,7 @@
+{
+  "name": "THEMENAME-drupal-theme",
+  "license": "unlicensed",
+  "dependencies": {
+    "bootstrap.ui": "^2.0.0"
+  }
+}

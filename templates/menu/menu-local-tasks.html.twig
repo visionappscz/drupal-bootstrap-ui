@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display primary and secondary local tasks.
+ *
+ * Available variables:
+ * - primary: HTML list items representing primary tasks.
+ * - secondary: HTML list items representing primary tasks.
+ *
+ * Each item in these variables (primary and secondary) can be individually
+ * themed in menu-local-task.html.twig.
+ *
+ * @see template_preprocess_menu_local_tasks()
+ *
+ * @ingroup templates
+ */
+#}
+{% if secondary %}
+  <div class="cta-container clearfix">
+    <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+    <div class="dropdown cta">
+      <button
+        class="btn btn-primary btn-raised dropdown-toggle"
+        type="button"
+        id="localActions"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="true"
+      >
+        {{ 'More'|t }}
+        <span class="glyphicon glyphicon-menu-down offset-left" aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="localActions">
+        {{ secondary }}
+      </ul>
+    </div>
+  </div>
+{% endif %}
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  <ul class="nav nav-tabs nav-tabs-header">{{ primary }}</ul>
+{% endif %}

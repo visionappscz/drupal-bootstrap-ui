@@ -1,0 +1,26 @@
+{
+    "name": "visionappscz/THEMENAME-drupal-theme",
+    "description": "THEMETITLE",
+    "type": "drupal-theme",
+    "license": "unlicensed",
+    "authors": [
+        {
+            "name": "Jan Kryšpín",
+            "email": "honza@visionapps.cz"
+        },
+        {
+            "name": "Adam Kudrna",
+            "email": "adam@visionapps.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:visionappscz/drupal-bootstrap-ui.git"
+        }
+    ],
+    "require": {
+        "visionappscz/bootstrap-ui": "~0.5.0"
+    }
+}

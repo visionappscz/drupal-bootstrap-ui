@@ -1,0 +1,57 @@
+/**
+ * Toolbar module styling.
+ */
+
+@toolbar-width: 240px;
+
+@media (max-width: 609px) {
+  .toolbar-vertical.toolbar-tray-open .toolbar-oriented .toolbar-tray-vertical.is-active {
+    margin-top: 39 + @navbar-height !important; // override inline style
+  }
+}
+
+body.toolbar-fixed {
+
+  // Fix z-index.
+  .toolbar-oriented .toolbar-bar {
+    z-index: (@zindex-navbar-fixed + 1);
+  }
+
+  // Shift navbar.
+  .navbar-fixed-top {
+    top: 39px;
+  }
+
+  // Horizontal.
+  &.toolbar-horizontal.navbar-is-fixed-top {
+    padding-top: 79px !important; // override inline style
+
+    &.toolbar-tray-open {
+      padding-top: 129px !important; // override inline style
+
+      .navbar-fixed-top {
+        top: 79px;
+      }
+    }
+  }
+
+  // Vertical Open.
+  &.toolbar-vertical.toolbar-tray-open {
+    .navbar-fixed-top {
+      left: @toolbar-width;
+    }
+
+    &.toolbar-fixed {
+      margin-left: @toolbar-width;
+
+      .toolbar-tray {
+        padding-bottom: 40px;
+
+        &,
+        > .toolbar-lining:before {
+          width: @toolbar-width;
+        }
+      }
+    }
+  }
+}

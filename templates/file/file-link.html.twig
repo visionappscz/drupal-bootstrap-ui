@@ -1,0 +1,34 @@
+{% spaceless %}
+  {%
+    set classes = [
+      icon_only ? 'icon-only',
+      not icon_only ? 'icon-' ~ icon_position|clean_class
+    ]
+  %}
+  <span{{ attributes.addClass(classes) }}>
+    {% if icon_only %}
+      <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+      <span class="sr-only">
+        {{ link }}
+      </span>
+    {% else %}
+      <div class="media">
+        {% if icon_position == 'after' %}
+          <div class="media-body">
+            {{ link }}
+          </div>
+          <div class="media-right">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+          </div>
+        {% else %}
+          <div class="media-left">
+            <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+          </div>
+          <div class="media-body">
+            {{ link }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </span>
+{% endspaceless %}

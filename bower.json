@@ -1,0 +1,14 @@
+{
+  "name": "drupal-bootstrap-ui",
+  "version": "0.1.0",
+  "description": "Bootstrap UI for Drupal 8",
+  "homepage": "http://www.bootstrap-ui.com",
+  "authors": [
+    "http://www.visionapps.cz"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap.ui": "^2.0.0",
+    "picturefill": "~2.3.0"
+  }
+}

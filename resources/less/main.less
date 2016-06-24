@@ -1,0 +1,17 @@
+// Bootstrap UI for Drupal
+
+
+@import "bootstrap/less/variables";
+@import "bootstrap.ui/src/less/config/variables";
+
+// Bootstrap/Drupal Overrides
+@import "bootstrap_drupal/overrides";
+
+// Extensions
+.cta-container {
+    margin-bottom: @line-height-computed / 2;
+
+    @media (min-width: @grid-float-breakpoint) {
+        margin-top: -40px;
+    }
+}

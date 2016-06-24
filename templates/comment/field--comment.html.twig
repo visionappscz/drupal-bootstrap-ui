@@ -1,0 +1,28 @@
+<section{{ attributes.addClass('offset-top-large') }}>
+  {% if comments and not label_hidden %}
+    {{ title_prefix }}
+    <h2{{ title_attributes }}>
+      <div class="media">
+        <div class="media-left hidden-xs">
+          <span class="glyphicon glyphicon-comment offset-right icon-shift-down" aria-hidden="true"></span>
+        </div>
+        <div class="media-body">
+          {{ label }}
+        </div>
+      </div>
+    </h2>
+    {{ title_suffix }}
+  {% endif %}
+
+  <div class="offset-bottom-large">
+    {{ comments }}
+  </div>
+
+  {% if comment_form %}
+    <h3{{ content_attributes.addClass('h4', 'offset-bottom') }}>{{ 'Add new comment'|t }}</h3>
+    <div class="offset-bottom-large">
+      {{ comment_form }}
+    </div>
+  {% endif %}
+
+</section>
