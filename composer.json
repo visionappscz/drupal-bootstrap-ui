@@ -13,10 +13,10 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
-      "drupal/bootstrap": "8.3.0-beta3"
+      "drupal/bootstrap": "3.0-beta3"
     }
 }
