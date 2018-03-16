@@ -34,7 +34,7 @@
     {% for item in items %}
       {% if menu_level == 0 and item.is_expanded %}
         <li{{ item.attributes.addClass('expanded', 'dropdown') }}>
-          <a href="{{ item.url }}" class="dropdown-toggle" data-target="#" data-toggle="dropdown">
+          <a href="{{ item.url }}" class="dropdown-toggle" data-toggle="dropdown">
             {{ item.title }}
             <span class="glyphicon glyphicon-menu-down offset-left" aria-hidden="true"></span>
           </a>

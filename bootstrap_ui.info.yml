@@ -21,7 +21,6 @@ regions:
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
-libraries:
-  - 'bootstrap_ui/global-styling'
-  - 'bootstrap_ui/bootstrap-scripts'
-  - 'bootstrap_ui/bootstrap-ui-scripts'
+libraries-extend:
+  bootstrap/framework:
+  - 'bootstrap_ui/framework'
