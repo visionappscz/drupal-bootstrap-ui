@@ -1,11 +1,9 @@
-global-styling:
+framework:
   css:
     theme:
       'https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700&amp;subset=latin,latin-ext': { type: external }
       css/bootstrap-ui.css: {}
       css/drupal-bootstrap-ui.css: {}
-
-bootstrap-scripts:
   js:
     js/bootstrap/affix.js: {}
     js/bootstrap/alert.js: {}
@@ -19,9 +17,4 @@ bootstrap-scripts:
     js/bootstrap/scrollspy.js: {}
     js/bootstrap/tab.js: {}
     js/bootstrap/transition.js: {}
-
-bootstrap-ui-scripts:
-  js:
     js/main.js: {}
-  dependencies:
-    - bootstrap/theme

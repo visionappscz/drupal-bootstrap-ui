@@ -17,6 +17,6 @@
         }
     ],
     "require": {
-      "drupal/bootstrap": "^3.7"
+      "drupal/bootstrap": "^3.11"
     }
 }
