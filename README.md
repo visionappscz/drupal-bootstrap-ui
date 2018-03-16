@@ -11,7 +11,22 @@ recommended way of installation.
 
 ## Install
 
+Add the following to your `composer.json` to tell Composer where to find this package:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ]
+}
 ```
+
+Install the package:
+
+```bash
 $ composer require visionappscz/bootstrap-ui
 ```
 
