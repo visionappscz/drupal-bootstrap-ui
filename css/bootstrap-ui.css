@@ -5,11 +5,11 @@
  *
  * Created by VisionApps (www.visionapps.cz)
  *
- * v2.0.0 (24 June 2016)
+ * v2.3.2 (8 September 2016)
  */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1102,7 +1102,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2539,7 +2538,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3027,6 @@ select[multiple].input-lg {
 .item-action.focus,
 .item-action:active.focus,
 .item-action.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3466,7 +3463,8 @@ fieldset[disabled] .btn-link:focus {
   line-height: 1.5;
   border-radius: 2px;
 }
-.btn-block {
+.btn-block,
+.btn-dropdown {
   display: block;
   width: 100%;
 }
@@ -8591,7 +8589,7 @@ Styleguide 1.4
 /*
 Teaser
 
-Article teaser. You can turn the whole teaser into link (preferred use) or just make links from title, image, and
+Article teaser. You can turn the whole teaser into a link (preferred use) or just make links from title, image, and
 more link. Designed for use in grid. Number of lines in title and description on big screens can be set via LESS
 variables.
 
@@ -9164,8 +9162,14 @@ Styleguide 2.6
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
-  /* 1, 3 */
+  min-height: 100%;
+  /* 3 */
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .site {
+    height: 100%;
+    /* 1, 3 */
+  }
 }
 .site-header,
 .site-footer {
@@ -9190,7 +9194,7 @@ Link back to previous page. Typically used together with `<h2>` headings.
     <div class="panel-heading"><h4 class="panel-title">Heads Up!</h4></div>
     <div class="panel-body">
         It may be a little bit confusing to distinguish between the Back Link and More Link components. They both
-        appear on the right side of heading on big screens but they are designed in a different way for mobile.
+        appear on the right side of the heading on big screens, but they are designed in a different way for mobiles.
     </div>
 </div>
 
@@ -9357,7 +9361,7 @@ More Link
 
 Responsive link to a complete listing. Works best with H2.
 
-By default, more link is aligned to baseline with element that has space of one line between itself and the following
+By default, more link is aligned to baseline with the element that has space of one line between itself and the following
 content. The value corresponds to default bottom margin of H2 (which is one line) and can be adjusted via LESS variable
 `@more-link-top-offset`.
 
@@ -9365,7 +9369,7 @@ content. The value corresponds to default bottom margin of H2 (which is one line
     <div class="panel-heading"><h4 class="panel-title">Heads Up!</h4></div>
     <div class="panel-body">
         It may be a little bit confusing to distinguish between the Back Link and More Link components. They both
-        appear on the right side of heading on big screens, but they are designed in a different way for mobile.
+        appear on the right side of the heading on big screens, but they are designed in a different way for mobiles.
     </div>
 </div>
 
@@ -9978,7 +9982,7 @@ Single Option
 
 Markup:
 <select class="form-control" data-onload-select2>
-    <option selected value="">All</option>
+    <option selected value="All">All</option>
     <option value="Denver">Denver</option>
     <option value="Liptákov">Liptákov</option>
     <option value="Moscow">Moscow</option>
@@ -9988,6 +9992,43 @@ Markup:
 </select>
 
 Styleguide 4.5.1
+*/
+/*
+Single Option with Images
+
+Images can be added to options.
+
+Markup:
+<select class="form-control" data-onload-select2='{"minimumResultsForSearch": "Infinity"}'>
+    <option>No image</option>
+    <option
+        selected
+        data-image-src="//satyr.io/32x16?flag=cze"
+        data-image-srcset="//satyr.io/32x16?flag=cze, //satyr.io/64x32?flag=cze 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Czech</option>
+    <option
+        data-image-src="//satyr.io/32x16?flag=can"
+        data-image-srcset="//satyr.io/32x16?flag=can, //satyr.io/64x32?flag=can 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Canadian</option>
+    <option
+        data-image-src="//satyr.io/32x16?flag=che"
+        data-image-srcset="//satyr.io/32x16?flag=che, //satyr.io/64x32?flag=che 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Swiss</option>
+    <option
+        data-image-src="//satyr.io/60x60?flag=che"
+        data-image-srcset="//satyr.io/60x60?flag=che, //satyr.io/120x120?flag=che 2x"
+        data-image-width="60"
+        data-image-height="60"
+    >Swiss bigger</option>
+</select>
+
+Styleguide 4.5.2
 */
 /*
 Multiple Options
@@ -10002,19 +10043,65 @@ Markup:
     <option value="Viena">Vienna</option>
 </select>
 
-Styleguide 4.5.2
+Styleguide 4.5.3
 */
-.select2-search input,
+/*
+Multiple Options with Images
+
+Markup:
+<select class="form-control" multiple data-onload-select2='{"minimumResultsForSearch": "Infinity"}'>
+    <option
+        selected
+        data-image-src="//satyr.io/40x40/forestgreen"
+        data-image-width="40"
+        data-image-height="40"
+    >Forest green</option>
+    <option
+        selected
+        data-image-src="//satyr.io/40x40/crimson"
+        data-image-width="40"
+        data-image-height="40"
+    >Crimson</option>
+    <option
+        data-image-src="//satyr.io/40x40/steelblue"
+        data-image-width="40"
+        data-image-height="40"
+    >Steel blue</option>
+</select>
+
+Styleguide 4.5.4
+*/
+.select2-container a {
+  -webkit-transition: none;
+  transition: none;
+}
+.select2-result-label > img,
+.select2-chosen > img,
+.select2-search-choice img {
+  margin-right: 10px;
+}
+.select2-container.form-control,
+.select2-container .select2-choice {
+  min-height: 42px;
+  height: auto;
+}
+.select2-container.input-sm .select2-choice,
+.input-group-sm .select2-container .select2-choice {
+  min-height: 33px;
+  height: auto;
+}
+.select2-container.input-lg .select2-choice,
+.input-group-lg .select2-container .select2-choice {
+  min-height: 49px;
+  height: auto;
+}
 .select2-search-choice-close,
-.select2-container .select2-choice abbr,
-.select2-container .select2-choice .select2-arrow b {
+.select2-container .select2-choice abbr {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAACLElEQVR42u3Zz0sUYRzH8bUISoyF1i5iXSooyYgOEXapZNYNojwU/aAfUAT9A4YhUgdxt1To0KFIBCMIvEcUEXntUtivpYuUhYFIdDBMmD69he/hObgsbSnb13ngdZjZhX3eO8/MDrMpSctKErwsg//HUSgU7uNYsB3hHla4CybqEoRPaMJGFCEMewxuxnsIk5iALPqg1yVdj9eQGUdjiuE1eAs+QOYztrsMJqwFk8EyHguW95klD+ZD08gsYvBFCBPYgHXBOT1UNpg3ncQpnAicRbrCCQ3j8SIf5QvYEWxvxnlb0mWDr0MIvcOaCiayC78gRKmlH+WDbaIjkJnDzgq/+VHIvMWqag3ehBkIAxXGdkAIDVRlsE24H9//4ty9hju4Hej710c5m83WYging32HMYjMnwSvx75UlQ+iOiDEaEMLZiA8dPc7TFQDnkGYxQ8Iz9Hs8k4riqIa4l5ApojVbm8tiduPL5CZRs5lMGFH8DNYxo+C5d3tMfgohJeow0qMQujxuqRb0RBsZ3DA2ZIuP5LgJDgJToKr4ZHOWjTOy+fzNa6DiezCFGReod1lMGF3IYzjMm5B5rirYIJyEJ4iHezfjW+YRr2n4EHE2LrAa1cg5DwFj2DWLlKljn67p+B+CIdKPAaOsddTcBOEKbTZvjp0Qvjo8Sp9DjJFfIVMjBsef4f34AHeYAxX0VfqMbDnfw97IXMTta6DLbobcxBa3Qdb9BPE2LZQ8G98530ecQi/2QAAAABJRU5ErkJggg==") !important;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 2dppx) {
-  .select2-search input,
   .select2-search-choice-close,
-  .select2-container .select2-choice abbr,
-  .select2-container .select2-choice .select2-arrow b {
+  .select2-container .select2-choice abbr {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABQCAYAAADSm7GJAAADFElEQVR42u2dsW4TQRBAI0ERCYpDpAUdJX/hAlxQ3SekovYXIIvKEiBRIUF1lHT+BP+Br0TCCCsFLW5cmCS3jKWNNFrdZu+EOG7sd9Irkl0p8r3s7Mzs5XLinIMD5uhvAIIBwYBgaMnNNZvNyj0nkUvPQbAdtDjnCSU3zkGwEbS4iOToHATbE6wptVwEGyUhcaW/JkTbT7JcCpIse4K7SC4pk4wRXreE5ZUMUwezgh03lT0YyKKBOhjoZHUi1oCf7mkYohd9ACVFrj50HgxzmtQifKwF15L1fxC8UD9/EQxzHtxC8KiD4FHPNWMhuIACwd33h3kLuXOZ2mc4yyLRZS1kCG6H3uc2Mbl+LO9Z8FRwEaYINnpDdWKVIEdwC/QVC4l97nk6sUqwQHA3wbGEa9Sj4CCxSlIguHtZMg8Tq/4Edy/bLNXB4/G4FKJ1sJ7zTwTrhMuTU3f+NVqc84SSG+bEJR99a3BoaHERybE5HDYYFKwptVwEGyUhcRX5PufBRoiH4Tg80WFMcBfJPJNljfC6JSzzVCUrGMHswUAWDdTBQCcLOveiCdEBnCYBb9kBBAOCAcGAYEDw0XP0NwDBgGBAMCAYEAwIHvD7QzJhIlSCE2rF0o9lav4eBBt5JWHR8EfzdYATfgkFgg2g5J4LdSD1WrjyXDeIPkfwsNErV6/Y38J34aXwWHgkvBJWwi74RSgQPGD8nrtRwrbCe+G0YX9+KHzyc2rPRsgQPFzBEyVrJ7xLvNTsjvBBuFQreYLg4Qpeqv32m3BP+YxJPhUulOAKwQMl2HsnymNK8mudeCF44IK9rCcdBD8XrhBsS/BTBBOibwTPCNEGCFqSX4X7LeSeCRdK8BLBwy6TdIPjo3A3kUF/pkyy1+ioPVsv8KxB7gPhi7BVcndCpqYheKCtSt1+vBR+CG+EZ8IL4a3wU69cRYlgC4cN4UFD/LDBNVAi2NZxYa0Ixe5ikhFs58B/2SC48mOZUMYkI/jw/61diWDzgtOSEWxdcFpyhWDTgtOSEWxccCgZwfZJ9akrJXiKYEDwMfAHMSYobVemsdsAAAAASUVORK5CYII=") !important;
   }
 }
@@ -10022,6 +10109,117 @@ Styleguide 4.5.2
 .select2-more-results.select2-active,
 .select2-container-multi .select2-choices .select2-search-field input.select2-active {
   background-image: url("data:image/gif;base64,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") !important;
+}
+.select2-search:before {
+  content: "\e003";
+}
+.select2-search:before {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  bottom: 0;
+  width: 30px;
+  text-align: center;
+  line-height: 34px;
+  color: #777777;
+}
+.select2-search input {
+  background: none !important;
+}
+.select2-container .select2-choice .select2-arrow {
+  width: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+.select2-container .select2-choice .select2-arrow b {
+  width: auto;
+  height: auto;
+}
+.select2-container .select2-choice .select2-arrow b,
+.select2-container .select2-choice div b,
+.select2-container.input-sm .select2-choice .select2-arrow b,
+.input-group-sm .select2-container .select2-choice .select2-arrow b,
+.select2-container.input-sm .select2-choice div b,
+.input-group-sm .select2-container .select2-choice div b,
+.select2-container.input-lg .select2-choice .select2-arrow b,
+.input-group-lg .select2-container .select2-choice .select2-arrow b,
+.select2-container.input-lg .select2-choice div b,
+.input-group-lg .select2-container .select2-choice div b {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  top: 0;
+  background-image: none !important;
+}
+.select2-container .select2-choice .select2-arrow b:before,
+.select2-container .select2-choice div b:before,
+.select2-container.input-sm .select2-choice .select2-arrow b:before,
+.input-group-sm .select2-container .select2-choice .select2-arrow b:before,
+.select2-container.input-sm .select2-choice div b:before,
+.input-group-sm .select2-container .select2-choice div b:before,
+.select2-container.input-lg .select2-choice .select2-arrow b:before,
+.input-group-lg .select2-container .select2-choice .select2-arrow b:before,
+.select2-container.input-lg .select2-choice div b:before,
+.input-group-lg .select2-container .select2-choice div b:before {
+  content: "\e259";
+}
+.select2-dropdown-open .select2-choice .select2-arrow b,
+.select2-dropdown-open .select2-choice div b,
+.select2-dropdown-open.input-sm .select2-choice .select2-arrow b,
+.input-group-sm .select2-dropdown-open .select2-choice .select2-arrow b,
+.select2-dropdown-open.input-sm .select2-choice div b,
+.input-group-sm .select2-dropdown-open .select2-choice div b,
+.select2-dropdown-open.input-lg .select2-choice .select2-arrow b,
+.input-group-lg .select2-dropdown-open .select2-choice .select2-arrow b,
+.select2-dropdown-open.input-lg .select2-choice div b,
+.input-group-lg .select2-dropdown-open .select2-choice div b {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  top: 0;
+  background-image: none !important;
+}
+.select2-dropdown-open .select2-choice .select2-arrow b:before,
+.select2-dropdown-open .select2-choice div b:before,
+.select2-dropdown-open.input-sm .select2-choice .select2-arrow b:before,
+.input-group-sm .select2-dropdown-open .select2-choice .select2-arrow b:before,
+.select2-dropdown-open.input-sm .select2-choice div b:before,
+.input-group-sm .select2-dropdown-open .select2-choice div b:before,
+.select2-dropdown-open.input-lg .select2-choice .select2-arrow b:before,
+.input-group-lg .select2-dropdown-open .select2-choice .select2-arrow b:before,
+.select2-dropdown-open.input-lg .select2-choice div b:before,
+.input-group-lg .select2-dropdown-open .select2-choice div b:before {
+  content: "\e260";
 }
 /*
 Alerts
@@ -10293,6 +10491,55 @@ Styleguide 5.3.4
   opacity: .5;
 }
 /*
+Buttons in Dropdowns
+
+Make button in dropdown look like any other item.
+
+Markup:
+<div class="dropdown">
+    <button class="btn btn-default" type="button" id="itemOptions1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Options
+        <span class="glyphicon glyphicon-menu-down offset-left" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="itemOptions1">
+        <li>
+            <a href="#">
+                <span class="glyphicon glyphicon-pencil offset-right" aria-hidden="true"></span>
+                Edit
+            </a>
+        </li>
+        <li>
+            <button type="button" class="btn btn-dropdown">
+                <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
+                Delete
+            </button>
+        </li>
+    </ul>
+</div>
+
+Styleguide 5.3.5
+*/
+.btn-dropdown {
+  clear: both;
+  padding: 3px 20px;
+  font-weight: normal;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-align: left;
+  color: #333333;
+  border-radius: 0;
+  background-color: transparent;
+}
+.btn-dropdown:hover,
+.btn-dropdown:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.btn-dropdown:active {
+  box-shadow: none;
+}
+/*
 Gallery
 
 Bootstrap-grid-independent responsive thumbnail grid. Designed for easy use.
@@ -10357,7 +10604,7 @@ Styleguide 5.5
 Item Actions
 
 Item actions extend [Bootstrap button](http://getbootstrap.com/css/#buttons) component. They are optimized for long
-lists of items where each item offers one or more action to be taken. They look the best when used only with icons.
+lists of items where each item offers one or more actions to be taken. They look the best when used only with icons.
 
 Markup:
 <p>
@@ -10377,38 +10624,40 @@ Markup:
     </a>
 </p>
 <p><strong>Used in table:</strong></p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Article</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Hotforwords Can Explain Lorem Ipsum far better than I can</td>
-            <td class="table-cell-actions">
-                <a href="#" class="item-action" title="Edit">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </a>
-                <a href="#" class="item-action item-action-danger" title="Delete">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td>Which to isn't lesser together years land heaven brought</td>
-            <td class="table-cell-actions">
-                <a href="#" class="item-action" title="Edit">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </a>
-                <a href="#" class="item-action item-action-danger" title="Delete">
-                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Article</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hotforwords Can Explain Lorem Ipsum far better than I can</td>
+                <td class="table-cell-actions">
+                    <a href="#" class="item-action" title="Edit">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" class="item-action item-action-danger" title="Delete">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Which to isn't lesser together years land heaven brought</td>
+                <td class="table-cell-actions">
+                    <a href="#" class="item-action" title="Edit">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a href="#" class="item-action item-action-danger" title="Delete">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 Styleguide 5.6
 */
@@ -10473,7 +10722,7 @@ Styleguide 5.7
 /*
 Tables
 
-Default [Bootstrap tables](http://getbootstrap.com/css/#tables) can be extended with following features:
+Default [Bootstrap tables](http://getbootstrap.com/css/#tables) can be extended with the following features:
 
 - Disabled row for inactive items
 - Nested items to present hierarchy
@@ -10664,6 +10913,58 @@ td.table-cell-id {
   vertical-align: top !important;
 }
 /*
+Tables with Dropdowns
+
+Prevent clipped dropdown menus in responsive tables.
+
+Markup:
+<div class="table-responsive table-responsive-dropdowns">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="table-cell-id">ID 1</td>
+                <td>2016-06-30 11:30:22</td>
+                <td>John Doe</td>
+                <td class="text-right">49 USD</td>
+                <td class="table-cell-actions">
+                    <div class="btn-group">
+                        <button class="item-action" type="button" id="itemOptions1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="itemOptions1">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-usd offset-right" aria-hidden="true"></span>
+                                    Mark as paid
+                                </a>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-dropdown">
+                                    <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
+                                    Cancel order
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+Styleguide 5.8.2
+*/
+@media (max-width: 767px) {
+  .table-responsive-dropdowns {
+    overflow-y: auto;
+  }
+}
+@media (min-width: 768px) {
+  .table-responsive-dropdowns {
+    overflow: visible;
+  }
+}
+/*
 Thumbnails
 
 Extends [Bootstrap thumbnails](http://getbootstrap.com/components/#thumbnails) with fixed-image-height modification
@@ -10763,7 +11064,7 @@ Styleguide 5.9
 CKEditor Loader
 
 Initializes [CKEditor WYSIWYG editor](http://ckeditor.com) on the given `<textarea>` element.
-It does no more then to run the `$.ckeditor()` method. It is possible to initialize the editor with default or custom
+It does no more than run the `$.ckeditor()` method. It is possible to initialize the editor with default or custom
 options.
 
 <div class="panel panel-danger">
@@ -10783,10 +11084,9 @@ If the `lang` attribute is set on the `<html>` element the CKEditor is localized
 If a `<textarea>` HTML element has the attribute `data-onload-ckeditor` defined, it will be initialized as a CKEditor
 upon page load. The editor can be configured by the value passed to the attribute. If no value is passed, then CKEditor
 is initiated with default configuration. If the value is a valid JSON, then it will be parsed and used as a
-configuration object (see http://docs.ckeditor.com/#!/api/CKEDITOR.config for supported options). If the value is not a
-valid JSON, then it will be used as a path to an editor config file to be used
-(see http://docs.ckeditor.com/#!/guide/dev_configuration-section-using-a-custom-configuration-file for custom config
-file documentation).
+configuration object (see supported options in <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.config" target="_blank">docs</a>).
+If the value is not a valid JSON, then it will be used as a path to an editor config file to be used (see custom config file
+<a href="http://docs.ckeditor.com/#!/guide/dev_configuration-section-using-a-custom-configuration-file" target="_blank">documentation</a>).
 
 Markup:
 <textarea data-onload-ckeditor='{"language": "en"}'>Hi, I’m a textarea and I’m wearing a fancy CKEditor dress.</textarea>
@@ -10839,37 +11139,38 @@ To override default options, you can use the same options as the JavaScript API 
 #### JavaScript
 
 ##### Options
-
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>confirm-message</td>
-            <td>string</td>
-            <td>Are you sure?</td>
-            <td>Optional. The message to be displayed to the user in the confirmation dialog.</td>
-        </tr>
-        <tr>
-            <td>confirm-yes</td>
-            <td>string</td>
-            <td>Yes</td>
-            <td>Optional. The text to be shown in the button that confirms the action.</td>
-        </tr>
-        <tr>
-            <td>confirm-no</td>
-            <td>string</td>
-            <td>No</td>
-            <td>Optional. The text to be shown in the button that confirms the action.</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>confirm-message</td>
+                <td>string</td>
+                <td>Are you sure?</td>
+                <td>Optional. The message to be displayed to the user in the confirmation dialog.</td>
+            </tr>
+            <tr>
+                <td>confirm-yes</td>
+                <td>string</td>
+                <td>Yes</td>
+                <td>Optional. The text to be shown in the button that confirms the action.</td>
+            </tr>
+            <tr>
+                <td>confirm-no</td>
+                <td>string</td>
+                <td>No</td>
+                <td>Optional. The text to be shown in the button that confirms the action.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ##### Methods
 
@@ -10879,28 +11180,30 @@ Triggers a confirmation dialog on the given element.
 
 ##### Events
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>show.bui.confirmation</td>
-            <td>Fired as soon as the confirmation dialog is displayed.</td>
-        </tr>
-        <tr>
-            <td>confirmed.bui.confirmation</td>
-            <td>Fired when user confirms the dialog.</td>
-        </tr>
-        <tr>
-            <td>rejected.bui.confirmation</td>
-            <td>Fired when user rejects the dialog.</td>
-        </tr>
-    <tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>show.bui.confirmation</td>
+                <td>Fired as soon as the confirmation dialog is displayed.</td>
+            </tr>
+            <tr>
+                <td>confirmed.bui.confirmation</td>
+                <td>Fired when user confirms the dialog.</td>
+            </tr>
+            <tr>
+                <td>rejected.bui.confirmation</td>
+                <td>Fired when user rejects the dialog.</td>
+            </tr>
+        <tbody>
+    </table>
+</div>
 
 Markup:
 <form onsubmit="alert('Confirmation confirmed');" method="get">
@@ -10934,7 +11237,7 @@ Styleguide 6.2
 Datetimepicker Loader
 
 Initializes [Bootstrap Datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker) by
-[Jonathan Peterson](https://github.com/Eonasdan) on the given form field. It does no more then to run the
+[Jonathan Peterson](https://github.com/Eonasdan) on the given form field. It does no more than run the
 `$.datetimepicker()` method with an optional configuration object as its argument.
 
 <div class="panel panel-danger">
@@ -11018,24 +11321,26 @@ Toggles between enabled and disabled states.
 
 ##### Events
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle.bui.disable</td>
-            <td>Fired as soon as the disable function is called.</td>
-        </tr>
-        <tr>
-            <td>toggled.bui.disable</td>
-            <td>Fired when the disable function is finished.</td>
-        </tr>
-    <tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>toggle.bui.disable</td>
+                <td>Fired as soon as the disable function is called.</td>
+            </tr>
+            <tr>
+                <td>toggled.bui.disable</td>
+                <td>Fired when the disable function is finished.</td>
+            </tr>
+        <tbody>
+    </table>
+</div>
 
 Markup:
 <form>
@@ -11109,107 +11414,109 @@ The element that is to reset the filter on click has to have the `data-toggle="r
 
 ##### Filter Object
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>filter-attrib</td>
-            <td>string</td>
-            <td></td>
-            <td>Defines the name of the `data-` attribute of the filterable objects to use for filtering.</td>
-        </tr>
-        <tr>
-            <td>filter-value</td>
-            <td>string</td>
-            <td></td>
-            <td>The filter value to be used in the condition. When using the data-api, this is automatically
-                generated from the `:input` element value and does not not have to be set manually.</td>
-        </tr>
-        <tr>
-            <td>filter-operator</td>
-            <td>enum</td>
-            <td></td>
-            <td>
-                Defines how to compare the values. If comparing strings or arrays of strings, we can use either
-                `subset` or `intersect` operators. For comparing numeric values, the `=`, `<`, `>`, `<=` and `>=` are
-                available.
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Filter object `filter-value`</th>
-                            <th>Filterable element `data-*` attribute value</th>
-                            <th>Operator</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>[string]</td>
-                            <td>string</td>
-                            <td>intersect</td>
-                            <td>Checks if the filterable string attribute is a member of the filter object value array.</td>
-                        </tr>
-                        <tr>
-                            <td>[string]</td>
-                            <td>[string]</td>
-                            <td>intersect</td>
-                            <td>Checks if the filterable array attribute has at least one common element with the filter object value array.</td>
-                        </tr>
-                        <tr>
-                            <td>[string]</td>
-                            <td>[string]</td>
-                            <td>subset</td>
-                            <td>Checks if the filterable array attribute elements are all members of the filter object value array.</td>
-                        </tr>
-                        <tr>
-                            <td>string</td>
-                            <td>[string]</td>
-                            <td>intersect</td>
-                            <td>Checks if the filterable array attribute contains the filter object value string.</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>number</td>
-                            <td>=</td>
-                            <td>Checks if the filterable numeric attribute is equal to the filter object numeric value.</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>number</td>
-                            <td>&gt;</td>
-                            <td>Checks if the filterable numeric attribute is greater then the filter object numeric value.</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>number</td>
-                            <td>&lt;</td>
-                            <td>Checks if the filterable numeric attribute is lower then the filter object numeric value.</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>number</td>
-                            <td>&gt;=</td>
-                            <td>Checks if the filterable numeric attribute is greater then or equal to the filter object numeric value.</td>
-                        </tr>
-                        <tr>
-                            <td>number</td>
-                            <td>number</td>
-                            <td>&lt;=</td>
-                            <td>Checks if the filterable numeric attribute is lower then or equal to  the filter object numeric value.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>filter-attrib</td>
+                <td>string</td>
+                <td></td>
+                <td>Defines the name of the `data-` attribute of the filterable objects to use for filtering.</td>
+            </tr>
+            <tr>
+                <td>filter-value</td>
+                <td>string</td>
+                <td></td>
+                <td>The filter value to be used in the condition. When using the data-api, this is automatically
+                    generated from the `:input` element value and does not not have to be set manually.</td>
+            </tr>
+            <tr>
+                <td>filter-operator</td>
+                <td>enum</td>
+                <td></td>
+                <td>
+                    Defines how to compare the values. If comparing strings or arrays of strings, we can use either
+                    `subset` or `intersect` operators. For comparing numeric values, the `=`, `<`, `>`, `<=` and `>=` are
+                    available.
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Filter object `filter-value`</th>
+                                <th>Filterable element `data-*` attribute value</th>
+                                <th>Operator</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>[string]</td>
+                                <td>string</td>
+                                <td>intersect</td>
+                                <td>Checks if the filterable string attribute is a member of the filter object value array.</td>
+                            </tr>
+                            <tr>
+                                <td>[string]</td>
+                                <td>[string]</td>
+                                <td>intersect</td>
+                                <td>Checks if the filterable array attribute has at least one common element with the filter object value array.</td>
+                            </tr>
+                            <tr>
+                                <td>[string]</td>
+                                <td>[string]</td>
+                                <td>subset</td>
+                                <td>Checks if the filterable array attribute elements are all members of the filter object value array.</td>
+                            </tr>
+                            <tr>
+                                <td>string</td>
+                                <td>[string]</td>
+                                <td>intersect</td>
+                                <td>Checks if the filterable array attribute contains the filter object value string.</td>
+                            </tr>
+                            <tr>
+                                <td>number</td>
+                                <td>number</td>
+                                <td>=</td>
+                                <td>Checks if the filterable numeric attribute is equal to the filter object numeric value.</td>
+                            </tr>
+                            <tr>
+                                <td>number</td>
+                                <td>number</td>
+                                <td>&gt;</td>
+                                <td>Checks if the filterable numeric attribute is greater than the filter object numeric value.</td>
+                            </tr>
+                            <tr>
+                                <td>number</td>
+                                <td>number</td>
+                                <td>&lt;</td>
+                                <td>Checks if the filterable numeric attribute is lower than the filter object numeric value.</td>
+                            </tr>
+                            <tr>
+                                <td>number</td>
+                                <td>number</td>
+                                <td>&gt;=</td>
+                                <td>Checks if the filterable numeric attribute is greater than or equal to the filter object numeric value.</td>
+                            </tr>
+                            <tr>
+                                <td>number</td>
+                                <td>number</td>
+                                <td>&lt;=</td>
+                                <td>Checks if the filterable numeric attribute is lower than or equal to  the filter object numeric value.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ##### Methods
 
@@ -11223,32 +11530,34 @@ Displays all filterable elements.
 
 ##### Events
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>resetStart.bui.filterable</td>
-            <td>Fired as soon as the `reset` method is called.</td>
-        </tr>
-        <tr>
-            <td>resetEnd.bui.filterable</td>
-            <td>Fired as soon as the `reset` method is finished executing.</td>
-        </tr>
-        <tr>
-            <td>filter.bui.filterable</td>
-            <td>Fired when the `filter` method is called.</td>
-        </tr>
-        <tr>
-            <td>filtered.bui.filterable</td>
-            <td>Fired when the `filter` method is finished executing.</td>
-        </tr>
-    <tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>resetStart.bui.filterable</td>
+                <td>Fired as soon as the `reset` method is called.</td>
+            </tr>
+            <tr>
+                <td>resetEnd.bui.filterable</td>
+                <td>Fired as soon as the `reset` method is finished executing.</td>
+            </tr>
+            <tr>
+                <td>filter.bui.filterable</td>
+                <td>Fired when the `filter` method is called.</td>
+            </tr>
+            <tr>
+                <td>filtered.bui.filterable</td>
+                <td>Fired when the `filter` method is finished executing.</td>
+            </tr>
+        <tbody>
+    </table>
+</div>
 
 Markup:
 <div class="row">
@@ -11500,7 +11809,7 @@ Styleguide 6.5
 Select2 Loader
 
 Initializes [select2](https://select2.github.io) on the given `<select>` element.
-It does no more then to run the `$.select2()` method. It is possible to initialize the widget with default or custom
+It does no more than run the `$.select2()` method. It is possible to initialize the widget with default or custom
 options.
 
 <div class="panel panel-danger">
@@ -11522,20 +11831,69 @@ load. The widget can be configured by the value passed to the attribute. If no v
 initiated with default configuration. If a JSON object is passed, then it will be parsed and used as a configuration
 object (see https://select2.github.io/options.html for supported options).
 
+Styleguide 6.6
+*/
+/*
+Single Selection
+
 Markup:
-<select class="form-control" multiple data-onload-select2='{"minimumResultsForSearch": "Infinity"}'>
-    <option selected>Option 1</option>
-    <option>Option 2</option>
-    <option>Option 3</option>
+<select class="form-control" data-onload-select2='{"minimumResultsForSearch": "Infinity"}'>
+    <option
+        selected
+        value="flag-czech"
+        data-image-src="//satyr.io/32x16?flag=cze"
+        data-image-srcset="//satyr.io/32x16?flag=cze, //satyr.io/64x32?flag=cze 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Czech</option>
+    <option
+        value="flag-canada"
+        data-image-src="//satyr.io/32x16?flag=can"
+        data-image-srcset="//satyr.io/32x16?flag=can, //satyr.io/64x32?flag=can 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Canadian</option>
+    <option
+        data-image-src="//satyr.io/32x16?flag=che"
+        data-image-srcset="//satyr.io/32x16?flag=che, //satyr.io/64x32?flag=che 2x"
+        data-image-width="32"
+        data-image-height="16"
+    >Swiss</option>
 </select>
 
-Styleguide 6.6
+Styleguide 6.6.1
+*/
+/*
+Multiple Selection
+
+Markup:
+<select class="form-control" multiple data-onload-select2='{"minimumResultsForSearch": "Infinity"}'>
+    <option
+        selected
+        data-image-src="//satyr.io/40x40/forestgreen"
+        data-image-width="40"
+        data-image-height="40"
+    >Forest green</option>
+    <option
+        selected
+        data-image-src="//satyr.io/40x40/crimson"
+        data-image-width="40"
+        data-image-height="40"
+    >Crimson</option>
+    <option
+        data-image-src="//satyr.io/40x40/steelblue"
+        data-image-width="40"
+        data-image-height="40"
+    >Steel blue</option>
+</select>
+
+Styleguide 6.6.2
 */
 /*
 Slugger
 
-Creates a slug in one HTML form element based on value in another.
-The relationship is unidirectional in the sense that changes made to source element affect the target element, but not
+Creates a slug in one HTML form element based on a value in another.
+The relationship is unidirectional in the sense that changes made to the source element affect the target element, but not
 vice versa.
 
 <div class="panel panel-danger">
@@ -11549,8 +11907,8 @@ vice versa.
 
 #### Data-API
 
-To make this component function there must be two HTML form elements. One is the source where user types text and the
-other is the target where slugger dynamically generates the slug.
+To make this component function there must be two HTML form elements. One is the source where the user types text and the
+other is the target where the slugger dynamically generates the slug.
 
 Two attributes have to be defined on the source element:
 
@@ -11563,24 +11921,26 @@ the generated slug is to be displayed.
 
 ##### Options
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>target</td>
-            <td>jQuery HTML element collection</td>
-            <td></td>
-            <td>The element(s) where the slug should be displayed</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>target</td>
+                <td>jQuery HTML element collection</td>
+                <td></td>
+                <td>The element(s) where the slug should be displayed</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ##### Methods
 
@@ -11590,24 +11950,26 @@ Sets slug generated as the value of the target element based on the value of the
 
 ##### Events
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>updated.bui.slugger</td>
-            <td>Fired when user changes the value of the source element and the slug gets updated.</td>
-        </tr>
-        <tr>
-            <td>changed.bui.slugger</td>
-            <td>Fired when the source element looses focus after a change.</td>
-        </tr>
-    <tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>updated.bui.slugger</td>
+                <td>Fired when user changes the value of the source element and the slug gets updated.</td>
+            </tr>
+            <tr>
+                <td>changed.bui.slugger</td>
+                <td>Fired when the source element loses focus after a change.</td>
+            </tr>
+        <tbody>
+    </table>
+</div>
 
 Markup:
 <div class="row">
@@ -11630,8 +11992,11 @@ Styleguide 6.7
 /*
 Sortable Table
 
-Provides client-side sorting functionality. To ensure keyboard accessibility, remember to add `tabindex="0"` to all
-sortable column headers.
+Provides client-side sorting functionality. If browser supports language argument to the
+`String.prototype.localeCompare()` function, the ordering will be locale aware.
+If the argument is not supported or if the supplied argument is not a valid locale the ordering will not be locale aware.
+
+To ensure keyboard accessibility, remember to add `tabindex="0"` to all sortable column headers.
 
 If a given cell has the attribute `data-sort-value="someValue"` specified, the value of this element is used as
 opposed to the value of the cell.
@@ -11674,40 +12039,42 @@ or `desc` to indicate the sorting order.
 
 ##### Options
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>sorted-th</td>
-            <td>string</td>
-            <td></td>
-            <td>Mandatory. A jQuery object with reference to the `<th>` DOM element in the column by which we are to sort the table.</td>
-        </tr>
-        <tr>
-            <td>sort-direction</td>
-            <td>string</td>
-            <td>If the column is already sorted it defaults to the reverse order. If it is not sorted, it defaults to `asc`.</td>
-            <td>Optional. Defines the direction by which to sort. Accepts values `asc` or `desc`.</td>
-        </tr>
-        <tr>
-            <td>sort-navigation</td>
-            <td>jQuery object</td>
-            <td></td>
-            <td>
-                 Optional. A jQuery object with reference to the DOM element where the group quick links are to appear.
-                 The elements are grouped according to the value of th `data-sort-group="someValue"` attribute of each cell.
-                 For this to work correctly, all cells in a given column either must or must not posses the `data-sort-group` attribute.
-             </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>sorted-th</td>
+                <td>string</td>
+                <td></td>
+                <td>Mandatory. A jQuery object with reference to the `<th>` DOM element in the column by which we are to sort the table.</td>
+            </tr>
+            <tr>
+                <td>sort-direction</td>
+                <td>string</td>
+                <td>If the column is already sorted it defaults to the reverse order. If it is not sorted, it defaults to `asc`.</td>
+                <td>Optional. Defines the direction by which to sort. Accepts values `asc` or `desc`.</td>
+            </tr>
+            <tr>
+                <td>sort-navigation</td>
+                <td>jQuery object</td>
+                <td></td>
+                <td>
+                     Optional. A jQuery object with reference to the DOM element where the group quick links are to appear.
+                     The elements are grouped according to the value of th `data-sort-group="someValue"` attribute of each cell.
+                     For this to work correctly, all cells in a given column either must or must not posses the `data-sort-group` attribute.
+                 </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ##### Methods
 
@@ -11717,24 +12084,26 @@ Initiates a sortable table if needed and performs the sorting according to the o
 
 ##### Events
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>sort.bui.sortableTable</td>
-            <td>Fired as soon as the `sort` method is called.</td>
-        </tr>
-        <tr>
-            <td>sorted.bui.sortableTable</td>
-            <td>Fired as soon as the `sort` method is finished executing.</td>
-        </tr>
-    <tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>sort.bui.sortableTable</td>
+                <td>Fired as soon as the `sort` method is called.</td>
+            </tr>
+            <tr>
+                <td>sorted.bui.sortableTable</td>
+                <td>Fired as soon as the `sort` method is finished executing.</td>
+            </tr>
+        <tbody>
+    </table>
+</div>
 
 Styleguide 6.8
 */
@@ -11876,3 +12245,4 @@ Markup:
 
 Styleguide 6.8.2
 */
+/*# sourceMappingURL=bootstrap-ui.css.map */
