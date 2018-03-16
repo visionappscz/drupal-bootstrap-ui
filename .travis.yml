@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '8'
+before_install:
+- npm install -g bower grunt-cli
+install:
+- npm install
+- bower install
+before_script:
+- grunt
+notifications:
+  slack:
+    secure: dvdcdn3z5YocLsWK1PgcaLPX9B/CRX+dC38Q9RJa1V2HZaMahNJ4o86Spb6wNBZZkLZvVjXvjHBteP5oa4CjR3kD3hrmEl5CBQblvbe6m7fPSIchUli+npLJFYz4nA6sNE6iOP/33bk8v2cW7oNDXIq+91EYnxwnDZUxfh6wZEQFQzvM1JNOvHsFZsXGPLJSCbdpYyUUHTLDD8LkKL/AGc9qUpbAP3P9zJpw0JtsysXs9+tu95nZfTfXrUdMkq2yMuoOuG0j7Vfjv1iJVY68SQ22GEuI1140oBFBBBmjxYJIQfml5FG/6D+JKU1AFQql6Pb+xOU0j6LGWVNqpPHQFp72aRupDNhJXetlW+uamd1p7tRQlIGHd2+5McPgtU9HhKZU1rEkfw6wRiqeeUEOlquGUCABk9tU+f44enbDSNB3Re8U5nFW7QLRbhWjDFvmLuRLbFZ0XrL4YqFW4PujrWRlRix5nHetsTTcohbBdB5vmW0pbW4mdE/Rqt4Qtja9evtSWdEW3X+dgJIQ5rjWMPEsZeOnPqHN8r8lVZMGZ32xOKB6cpYk0JFjnGsow8R8mVgjqmnnIXJJYPGzB2diwZyt6RINL6ruqosuYGcAUR2V99nwRJjDvIhyGiJK7Y9AImANkZ0cFnOb/Sqgom3tBVhDfgC8UVC5hCoPJdJf33g=
