@@ -1,6 +1,8 @@
 Bootstrap UI for Drupal 8
 =========================
 
+[![Build Status](https://travis-ci.org/visionappscz/drupal-bootstrap-ui.svg?branch=8.x-1.x)](https://travis-ci.org/visionappscz/drupal-bootstrap-ui)
+
 This theme extends the [Drupal Bootstrap](http://drupal-bootstrap.org) project and implements visual and design
 principles of [Bootstrap UI](http://www.bootstrap-ui.com), a [Bootstrap](http://getbootstrap.com) extension for building
 beautiful web apps user interfaces.
