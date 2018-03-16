@@ -304,10 +304,10 @@ body.navbar-is-static-top {
   margin-top: 0;
 }
 body.navbar-is-fixed-top {
-  margin-top: 65px;
+  margin-top: 50px;
 }
 body.navbar-is-fixed-bottom {
-  padding-bottom: 65px;
+  padding-bottom: 50px;
 }
 @media screen and (min-width: 768px) {
   body {
