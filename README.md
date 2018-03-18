@@ -19,8 +19,8 @@ Add the following to your `composer.json` to tell Composer where to find this pa
 {
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "type": "git",
+            "url": "https://github.com/visionappscz/drupal-bootstrap-ui"
         }
     ]
 }
