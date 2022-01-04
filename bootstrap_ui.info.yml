@@ -1,6 +1,7 @@
 core: 8.x
 type: theme
 base theme: bootstrap
+core_version_requirement: ^8 || ^9
 
 name: 'Bootstrap UI'
 description: 'Uses Bootstrap UI, a Bootstrap extension for building beautiful web apps.'
